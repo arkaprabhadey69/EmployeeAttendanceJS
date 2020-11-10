@@ -178,4 +178,34 @@ console.log(primeFactors(15));
     }
     console.log(nthHarmonic(5))
 }
+//Head-Tail
+{
+    function toss() {
+        const HEAD = 0;
+        const TAIL = 1;
+        let toss = 0;
+        let heads=0;
+        let tails=0;
+        while(heads!=11&&tails!=11){
+         toss = Math.floor(Math.random() * 10) % 2;
+        switch (toss) {
+            case HEAD:
+                heads++;
+                if(heads==11){
+                    console.log("Heads won");
+                }
+                break;
+            case TAIL:
+                tails++;
+                if(tails==11){
+                    console.log("tails won");
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
+    toss();
+}
 
