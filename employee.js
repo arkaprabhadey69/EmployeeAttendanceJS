@@ -20,13 +20,11 @@ else if(empCheck==1){
     function getWorkingHrs(empCheck){
     switch(empCheck){
         case IS_PART_TIME:
-            empHrs=PART_TIME_HR;
-            break;
+           return PART_TIME_HR;
             case IS_FULL_TIME:
-                empHrs=FULL_TIME_HR;
-                break;
+                return FULL_TIME_HR;
                 default:
-                    empHrs=0;
+                    return 0;
 
     }
 }
