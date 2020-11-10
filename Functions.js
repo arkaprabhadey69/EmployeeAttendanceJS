@@ -1,3 +1,4 @@
+//Celcius_Farhenheit
 {
     const CELCIUS=1;
     const FARHENHEIT=2;
@@ -38,6 +39,7 @@
     console.log(convert(100,5));
 
 }
+//Palindrome-Prime
 {
     function isPalindrome(value){
         let copyNumber=value;
@@ -71,12 +73,109 @@
         }
         if(flag==true){
             console.log("Prime!");
+            return true;
         }
         else{
             console.log("NOt a prime!");
+            return false;
         }
 
     }
-    isPrime(97);
+    console.log(isPrime(97));
     isPrime(46);
 }
+//Powers of 2 with restriction
+{
+    function powerOf2(value){
+        for(let i=0;i<=value;i++){
+            if(Math.pow(2,i)>256){
+                break;
+            }
+            console.log(Math.pow(2,i));
+        }
+    }
+    powerOf2(9);
+}
+//Factorial
+{
+    function factorial(value){
+        let result=1;
+        while(value!=0){
+            result=result*value;
+            value--;
+        }
+        console.log(result);
+    }
+   factorial(5);
+   isPrime(5);
+}
+//Method of getting prime factors
+{
+    function isPrime(value){
+        flag=true;
+        for(let i=2;i<Math.floor(value/2);i++){
+            if(value%i==0){
+                flag=false;
+                break;
+            }
+        }
+        if(flag==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+    function primeFactors(num){
+        const result = [];
+         for (let i = 2; i <= num; i++){
+    while (isPrime(i) && num % i === 0){
+      if (!result.includes(i)) result.push(i);
+      num /= i;
+    }
+  }
+  return result;
+}
+console.log(primeFactors(15));
+}
+//Method of getting prime numbers within a range
+{
+    function isPrime(value){
+        flag=true;
+        for(let i=2;i<Math.floor(value/2);i++){
+            if(value%i==0){
+                flag=false;
+                break;
+            }
+        }
+        if(flag==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+    function getPrimeWithinRange(start,end){
+        for(let i=start;i<=end;i++){
+            if(isPrime(i)){
+                console.log(i);
+            }
+        }
+    }
+    getPrimeWithinRange(100,200);
+}
+//Method to find Nth harmonic number
+{
+    function nthHarmonic(number){
+        let harmonic=1;
+        for(let i=2;i<=number;i++){
+            harmonic=harmonic+ 1/number;
+        }
+        return harmonic;
+
+    }
+    console.log(nthHarmonic(5))
+}
+
