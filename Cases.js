@@ -74,6 +74,7 @@
     console.log(convertFeetMeterUnits(60,FEET));
     console.log(convertFeetMeterUnits(6,METER));
 }
+//Gambler
 {
     let moneyWithGambler = 100;
     const WIN = 1;
@@ -92,4 +93,27 @@
     }
     console.log("Number of Bets " + numberOfBets);
     console.log("Number of Wins " + numberOfWins);
+}
+//Magic number
+{
+    const prompt = require('prompt-sync')();
+    let number = 0;
+    while (number < 1 || number > 100) {
+        number = parseInt(prompt("Enter a Number Between 1 to 100 Range"));
+    }
+
+    let lowerRange = 1;
+    let upperRange = 100;
+    let middleValue = Math.floor((lowerRange + upperRange) / 2);
+
+    while (middle != number) {
+        if (number < middle) {
+            upperRange = middle;
+            middleValue = Math.floor((lowerRange + upperRange) / 2);
+        } else {
+            lowerRange = middleValue;
+            middleValue = Math.floor((lowerRange + upperRange) / 2);
+        }
+    }
+    console.log("Magic Number " + middle);
 }
