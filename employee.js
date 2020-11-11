@@ -34,6 +34,7 @@ else if(empCheck==1){
     let totalEmpHrs=0;
     let totalEmpDays=0;
     let empWageArray=new Array();
+    let empWageMap=new Map();
     function calculateWage(hrs){
         return hrs*WAGE_PER_HOUR;
     }
@@ -43,6 +44,7 @@ else if(empCheck==1){
         let empHours=getWorkingHrs(empCheck);
         totalEmpHrs+=empHours;
         empWageArray.push(calculateWage(empHours));
+        empWageMap.set(totalEmpDays,calculateWage(empHours));
     }
     let empWage=calculateWage(totalEmpHrs);
     console.log("Employee Wage is: "+ empWage+" and total hrs: "+ totalEmpHrs+" and total working days is: "+totalEmpDays);
@@ -83,16 +85,29 @@ else if(empCheck==1){
         return numOfDays;
     }
     let fullDayWage=mapDayWithWages.filter(fullTimeWage);
+    console.log("------------------");
     console.log("Daily Wage filter when full wage is obtained");
     console.log(fullDayWage);
+    console.log("------------------");
     console.log("First day when full wage is obtained");
     console.log(mapDayWithWages.find(fullTimeWage));
+    console.log("------------------");
     console.log("Check All element have full time wage");
     console.log(fullDayWage.every(fullTimeWage));
+    console.log("------------------");
     console.log("Daily Wage filter when part time wage is obtained");
     console.log(mapDayWithWages.some(partTimeWage));
-    console.log("Total numnber of days worked");
+    console.log("------------------");
+    console.log("Finding total number of days worked");
     console.log("Total number of working days: "+empWageArray.reduce(totalWorkingDays,0));
+
+    //Using map
+    console.log("------------------");
+    console.log("Employee Wage Map");
+    console.log(empWageMap);
+    console.log("------------------");
+    console.log("Total Employee Wage is, using Maps: "+Array.from(empWageMap.values()).reduce(totalWages,0));
+    
 
 
 
