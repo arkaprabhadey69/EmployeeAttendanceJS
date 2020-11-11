@@ -137,7 +137,9 @@
   }
   return result;
 }
-console.log(primeFactors(15));
+const prompt = require('prompt-sync')();
+let number = parseInt(prompt("Enter a number "));
+console.log(primeFactors(number));
 }
 //Method of getting prime numbers within a range
 {
@@ -164,10 +166,14 @@ console.log(primeFactors(15));
             }
         }
     }
-    getPrimeWithinRange(100,200);
+    const prompt = require('prompt-sync')();
+    let start = parseInt(prompt("Enter start "));
+    let end = parseInt(prompt("Enter end "));
+    getPrimeWithinRange(start,end);
 }
 //Method to find Nth harmonic number
 {
+
     function nthHarmonic(number){
         let harmonic=1;
         for(let i=2;i<=number;i++){
@@ -176,7 +182,9 @@ console.log(primeFactors(15));
         return harmonic;
 
     }
-    console.log(nthHarmonic(5))
+    const prompt = require('prompt-sync')();
+    let number = parseInt(prompt("Enter a number "));
+    console.log(nthHarmonic(number))
 }
 //Head-Tail
 {
