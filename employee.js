@@ -49,5 +49,15 @@ else if(empCheck==1){
     for(var i=0;i<empWageArray.length;i++){
         console.log(empWageArray[i]);
     }
+    let totalEmpWage=0;
+    function sum(dailywage){
+        totalEmpWage+=dailywage;
+    }
+    empWageArray.forEach(sum);
+    console.log("Employee Wage with foreach: "+totalEmpWage);
+    function totalWages(totalWage,dailyWage){
+        return totalWage+dailyWage;
+    }
+    console.log("Employee Wage with reduce: "+empWageArray.reduce(totalWages,0));
 }
 
