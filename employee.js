@@ -32,13 +32,22 @@ else if(empCheck==1){
     }
 }
     let totalEmpHrs=0;
-    let totalEmpDays=0
+    let totalEmpDays=0;
+    let empWageArray=new Array();
+    function calculateWage(hrs){
+        return hrs*WAGE_PER_HOUR;
+    }
     while(totalEmpDays<MAX_WORKING_DAYS&&totalEmpHrs<=MAX_HRS_MONTH){
         totalEmpDays++;
         let empCheck=Math.floor(Math.random()*10)%3;
-        totalEmpHrs+=getWorkingHrs(empCheck);
+        let empHours=getWorkingHrs(empCheck);
+        totalEmpHrs+=empHours;
+        empWageArray.push(calculateWage(empHours));
     }
-    let empWage=totalEmpHrs*WAGE_PER_HOUR;
+    let empWage=calculateWage(totalEmpHrs);
     console.log("Employee Wage is: "+ empWage+" and total hrs: "+ totalEmpHrs+" and total working days is: "+totalEmpDays);
+    for(var i=0;i<empWageArray.length;i++){
+        console.log(empWageArray[i]);
+    }
 }
 
