@@ -49,6 +49,7 @@ else if(empCheck==1){
     for(var i=0;i<empWageArray.length;i++){
         console.log(empWageArray[i]);
     }
+    //Calculating wages using foreach and map
     let totalEmpWage=0;
     function sum(dailywage){
         totalEmpWage+=dailywage;
@@ -59,5 +60,14 @@ else if(empCheck==1){
         return totalWage+dailyWage;
     }
     console.log("Employee Wage with reduce: "+empWageArray.reduce(totalWages,0));
+    //map daily wage with day
+    let day=0;
+    function mapDayWithWage(dailyWage){
+        day++;
+        return day+"="+dailyWage;
+    }
+    let mapDayWithWages=empWageArray.map(mapDayWithWage);
+    console.log("Map b/w days and wages");
+    console.log(mapDayWithWages);
 }
 
