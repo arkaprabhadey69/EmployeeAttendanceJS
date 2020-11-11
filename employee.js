@@ -73,11 +73,30 @@ else if(empCheck==1){
     function fullTimeWage(dailyWage){
         return dailyWage.includes("160");
     }
+    function partTimeWage(dailyWage){
+        return dailyWage.includes("80");
+    }
+    function totalWorkingDays(numOfDays,dailywage){
+        if(dailywage>0){
+            return numOfDays+1;
+        }
+        return numOfDays;
+    }
     let fullDayWage=mapDayWithWages.filter(fullTimeWage);
     console.log("Daily Wage filter when full wage is obtained");
     console.log(fullDayWage);
     console.log("First day when full wage is obtained");
     console.log(mapDayWithWages.find(fullTimeWage));
+    console.log("Check All element have full time wage");
+    console.log(fullDayWage.every(fullTimeWage));
+    console.log("Daily Wage filter when part time wage is obtained");
+    console.log(mapDayWithWages.some(partTimeWage));
+    console.log("Total numnber of days worked");
+    console.log("Total number of working days: "+empWageArray.reduce(totalWorkingDays,0));
+
+
+
+
 
 }
 
