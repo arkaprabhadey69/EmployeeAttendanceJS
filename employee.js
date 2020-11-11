@@ -69,5 +69,15 @@ else if(empCheck==1){
     let mapDayWithWages=empWageArray.map(mapDayWithWage);
     console.log("Map b/w days and wages");
     console.log(mapDayWithWages);
+    //Checks if it contains 160
+    function fullTimeWage(dailyWage){
+        return dailyWage.includes("160");
+    }
+    let fullDayWage=mapDayWithWages.filter(fullTimeWage);
+    console.log("Daily Wage filter when full wage is obtained");
+    console.log(fullDayWage);
+    console.log("First day when full wage is obtained");
+    console.log(mapDayWithWages.find(fullTimeWage));
+
 }
 
