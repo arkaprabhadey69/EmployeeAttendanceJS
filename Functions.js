@@ -137,9 +137,11 @@
   }
   return result;
 }
-const prompt = require('prompt-sync')();
-let number = parseInt(prompt("Enter a number "));
-console.log(primeFactors(number));
+
+// const prompt = require('prompt-sync')();
+// let number = parseInt(prompt("Enter a number "));
+console.log(primeFactors(15));
+
 }
 //Method of getting prime numbers within a range
 {

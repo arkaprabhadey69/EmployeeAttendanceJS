@@ -44,8 +44,9 @@
                     return "Incorrect";
             }
         }
-
-        console.log(getNumberWrittenInWords(7));
+        const prompt = require('prompt-sync')();
+         let number = parseInt(prompt("Enter a number "));
+        console.log(getNumberWrittenInWords(number));
     }
 }
 //Unit conversion

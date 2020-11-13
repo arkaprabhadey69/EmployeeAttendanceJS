@@ -72,16 +72,35 @@ class EmployeePayrollData {
     }
 
 }
-let employeePayrollData= new EmployeePayrollData(1,"Arka",52000,'M',new Date('2019-09-13'),'abc@yahoo.com',700026);
-console.log(employeePayrollData.toString());
+//let employeePayrollData= new EmployeePayrollData(1,"Arka",52000,'M',new Date('2019-09-13'),'abc@yahoo.com',700026);
+//console.log(employeePayrollData.toString());
 try{
+    let employeePayrollData= new EmployeePayrollData(1,"Arka",52000,'M',new Date('2019-09-13'),'abc@yahoo.com',700026);
+    let employeePayrollData1= new EmployeePayrollData(1,"Arka",52000,'M',new Date('2019-09-13'),'abc@yahoo.com',700026);
 employeePayrollData.name="Orko";
 employeePayrollData.id=6;
 employeePayrollData.salary=900000;
 employeePayrollData.startDate=new Date('2019-09-13');
 console.log(employeePayrollData.toString());
+let empArray= new Array();
+empArray.push(employeePayrollData);
+empArray.push(employeePayrollData1);
+empArray.filter(employeePayrollData=>employeePayrollData.name=="Orko").forEach(employeePayrollData=>console.log(employeePayrollData.salary));
+console.log( empArray.filter(emp=>emp.name=="Arka").reduce((acc, curVal) => acc.concat(curVal), []).length);
+    empArray.sort(function(a, b){
+        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+        if (nameA < nameB) //sort string ascending
+            return -1 
+        if (nameA > nameB)
+            return 1
+        return 0 //default return value (no sorting)
+    });
+    empArray.forEach(emp=>console.log(emp.name));
 }
 catch(e){
     console.error(e);
 
 }
+// let empArray= new Array();
+// empArray.push(employeePayrollData);
+// empArray.filter(employeePayrollData=>employeePayrollData.name=="Orko").forEach(employeePayrollData=>console.log(employeePayrollData.salary));

@@ -35,6 +35,8 @@ else if(empCheck==1){
     let totalEmpDays=0;
     let empWageArray=new Array();
     let empWageMap=new Map();
+    let empHrMap=new Map();
+    let empWageandHrMap= new Array();
     function calculateWage(hrs){
         return hrs*WAGE_PER_HOUR;
     }
@@ -45,6 +47,17 @@ else if(empCheck==1){
         totalEmpHrs+=empHours;
         empWageArray.push(calculateWage(empHours));
         empWageMap.set(totalEmpDays,calculateWage(empHours));
+        empHrMap.set(totalEmpDays,empHours);
+        empWageandHrMap.push(
+            {
+            dayNum:totalEmpDays,
+            dailyHr:empHours,
+            dailyWage:calculateWage(empHours),
+            toString(){
+                return '\nDay: '+ this.dayNum+ ' working hrs for this day: '+this.dailyHr+' wage for that day: '+this.dailyWage;
+
+            },
+        });
     }
     let empWage=calculateWage(totalEmpHrs);
     console.log("Employee Wage is: "+ empWage+" and total hrs: "+ totalEmpHrs+" and total working days is: "+totalEmpDays);
@@ -78,6 +91,7 @@ else if(empCheck==1){
     function partTimeWage(dailyWage){
         return dailyWage.includes("80");
     }
+    
     function totalWorkingDays(numOfDays,dailywage){
         if(dailywage>0){
             return numOfDays+1;
@@ -106,8 +120,33 @@ else if(empCheck==1){
     console.log("Employee Wage Map");
     console.log(empWageMap);
     console.log("------------------");
+    console.log("Employee Hr Map");
+    console.log(empHrMap);
     console.log("Total Employee Wage is, using Maps: "+Array.from(empWageMap.values()).reduce(totalWages,0));
-    
+    //Arrow Functions
+
+    const findTotal=(totalVal,dailyVal)=> {return totalVal+ dailyVal;}
+    let totalHrs=Array.from(empHrMap.values()).reduce(findTotal,0);
+    let totalWage=Array.from(empWageMap.values()).filter(dailyWage=>dailyWage>0).reduce(findTotal,0);
+    console.log("Total wage with arrows=> "+totalWage+" and hrs with arrow => "+totalHrs);
+
+    console.log("Employee Wage and Hr object: "+empWageandHrMap);
+    let totWages=empWageandHrMap.filter(daily=>daily.dailyWage>0).reduce((totalWage,dailywage)=> totalWage+=dailywage.dailyWage,0);
+    let totalWorkingHrs=empWageandHrMap.filter(daily=>daily.dailyWage>0).reduce((totalWage,dailywage)=> totalWage+=dailywage.dailyHr,0);
+    console.log("\n------------------");
+    console.log("Employee Wage using objects : "+totWages);
+    console.log("Employee Working hrs using objects : "+totalWorkingHrs);
+    console.log("\n------------------");
+    console.log("Full working days using Objects");
+    empWageandHrMap.filter(dailyWage=>dailyWage.dailyHr==8).forEach(empWageandHrMap=>process.stdout.write(empWageandHrMap.toString()));
+    console.log("\n------------------");
+    console.log("Part-time working days using Objects");
+    empWageandHrMap.filter(dailyWage=>dailyWage.dailyHr==4).forEach(empWageandHrMap=>process.stdout.write(empWageandHrMap.toString()));
+    console.log("\n------------------");
+    console.log("Non-working days");
+    empWageandHrMap.filter(dailyWage=>dailyWage.dailyHr==0).forEach(empWageandHrMap=>process.stdout.write(empWageandHrMap.toString()));
+
+
 
 
 
